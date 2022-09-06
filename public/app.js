@@ -23,7 +23,7 @@ function build() {
     divCalc.appendChild(titleCalc);
 
     calculatorWindow(divCalc);
-    
+
 }
 
 
@@ -45,10 +45,30 @@ function calculatorWindow(divCalc) {
     divCalc.appendChild(numberInput2);
 
 
-    const buttonAddition = document.getElementById()
+    const buttonAddition = document.createElement( 'button');
+    buttonAddition.innerText = '+';
+    buttonAddition.setAttribute('id', 'btnAddition');
+    divCalc.appendChild(buttonAddition);
 
+    const buttonSubtraction = document.createElement( 'button');
+    buttonSubtraction.innerText = '-';
+    buttonSubtraction.setAttribute('id', 'btnSubtraction');
+    divCalc.appendChild(buttonSubtraction);
+
+    const buttonMultiply = document.createElement( 'button');
+    buttonMultiply.innerText = '*';
+    buttonMultiply.setAttribute('id', 'btnMultiply');
+    divCalc.appendChild(buttonMultiply);
+
+    const buttonDivision = document.createElement( 'button');
+    buttonDivision.innerText = '/';
+    buttonDivision.setAttribute('id', 'btnDivision');
+    divCalc.appendChild(buttonDivision);
+
+    const calculatorResult = document.createElement('textarea');
+    calculatorResult.setAttribute('disabled', 'true');
+    divCalc.appendChild(calculatorResult);
     
-
 }
 
 
