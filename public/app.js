@@ -22,14 +22,9 @@ function build() {
     titleCalc.innerHTML = 'Calculator';
     divCalc.appendChild(titleCalc);
 
-    calculatorWindow(divCalc);
 
-}
-
-
-function settingsWindow() {
-
-
+    settingsWindow(divSettings); // skickar med variabeln till en annan function
+    calculatorWindow(divCalc); // skickar med variabeln till en annan function
 
 }
 
@@ -65,11 +60,33 @@ function calculatorWindow(divCalc) {
     buttonDivision.setAttribute('id', 'btnDivision');
     divCalc.appendChild(buttonDivision);
 
-    const calculatorResult = document.createElement('textarea');
-    calculatorResult.setAttribute('disabled', 'true');
-    divCalc.appendChild(calculatorResult);
+    // varje knapp anropa en ny funktion som räknar ut 
+    // och skriver ut resultatet
     
+    const calculatorResult = document.createElement('textarea');
+    calculatorResult.setAttribute('id', 'txaResult');
+    calculatorResult.disabled = true;
+    divCalc.appendChild(calculatorResult);
+
+
+    const buttonClear = document.createElement('button');
+    buttonClear.innerText = 'Clear';
+    buttonClear.setAttribute('id', 'btnClear');
+    divCalc.appendChild(buttonClear);
+
+    // nollsätta txaResult
+
 }
 
 
 
+function settingsWindow(divSettings) {
+
+    const colorOption = document.createElement('Option');
+    colorOption.setAttribute('id', 'btnColorOption');
+    colorOption.innerText = 'Grey';
+    divSettings.appendChild(colorOption);
+
+    // kanske clickable dropdown eller hover dropdown
+
+}
