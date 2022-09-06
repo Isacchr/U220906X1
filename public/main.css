@@ -11,3 +11,13 @@ body{
     border: 2px solid black;
     padding: 5px;
 }
+
+#input1{
+    width: 5%;
+    margin-right: 20px;
+}
+
+#input2{
+    width: 5%;
+    margin-right: 20px;
+}
