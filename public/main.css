@@ -38,3 +38,14 @@ body{
     background-color: aquamarine;
 }
 
+.Small{
+    font-size: 12px;
+}
+
+.Medium{
+    font-size: 20px;
+}
+
+.Large{
+    font-size: 30px;
+}

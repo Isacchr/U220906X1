@@ -25,7 +25,6 @@ function build() {
     
 
     calculatorWindow(divCalc, divSettings); // skickar med variabeln till en annan function
-    settingsWindow(divSettings, divCalc); // skickar med variabeln till en annan function
     
 }
 
@@ -94,7 +93,7 @@ function calculatorWindow(divCalc, divSettings) {
     buttonClear.setAttribute('id', 'btnClear');
     buttonClear.onclick = () => calculatorResult.innerHTML = "";
     divCalc.appendChild(buttonClear);
-    
+
     const hideShowBtn = document.createElement('button');
     hideShowBtn.onclick = () => divSettings.hidden = true; 
     hideShowBtn.innerText = 'Hide/Show';
@@ -102,11 +101,9 @@ function calculatorWindow(divCalc, divSettings) {
     hideShowBtn.onclick = () => divSettings.hidden = !divSettings.hidden;
     divCalc.appendChild(hideShowBtn);
     
-    settingsWindow(calculatorResult);
+    settingsWindow(divSettings, divCalc, calculatorResult);
     
 }
-
-
 
 function settingsWindow(divSettings, divCalc, calculatorResult) {
 
@@ -127,9 +124,9 @@ function settingsWindow(divSettings, divCalc, calculatorResult) {
     const fontSizeSelect = document.createElement('select');
     fontSizeSelect.setAttribute('id', 'fontSizeSelect');
 
-    createOptionsFont('12px', fontSizeSelect );
-    createOptionsFont('20px', fontSizeSelect );
-    createOptionsFont('30px', fontSizeSelect );
+    createOptionsFont('Small', fontSizeSelect );
+    createOptionsFont('Medium', fontSizeSelect );
+    createOptionsFont('Large', fontSizeSelect );
 
     fontSizeSelect.onchange = (event) => calculatorResult.className = event.target.value;
 
