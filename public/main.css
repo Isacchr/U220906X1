@@ -22,6 +22,15 @@ body{
     margin-right: 20px;
 }
 
-#btnColorOption{
-    
+.Grey{
+    background-color: grey;
 }
+
+.Blue{
+    background-color: blue;
+}
+
+.Yellow{
+    background-color: yellow;
+}
+

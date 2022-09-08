@@ -6,14 +6,6 @@ function build() {
 
     //console.log('Hey from javascript');
 
-    const divSettings = document.createElement('div');
-    divSettings.setAttribute('id', 'settings');
-    app.appendChild(divSettings);
-    
-    const titleSettings = document.createElement('h1');
-    titleSettings.innerHTML = 'Settings';
-    divSettings.appendChild(titleSettings);
-    
     const divCalc = document.createElement('div');
     divCalc.setAttribute('id', 'calculator');
     app.appendChild(divCalc);
@@ -23,9 +15,18 @@ function build() {
     divCalc.appendChild(titleCalc);
 
 
-    settingsWindow(divSettings); // skickar med variabeln till en annan function
-    calculatorWindow(divCalc, divSettings); // skickar med variabeln till en annan function
+    const divSettings = document.createElement('div');
+    divSettings.setAttribute('id', 'settings');
+    app.appendChild(divSettings);
+    
+    const titleSettings = document.createElement('h1');
+    titleSettings.innerHTML = 'Settings';
+    divSettings.appendChild(titleSettings);
+    
 
+    calculatorWindow(divCalc, divSettings); // skickar med variabeln till en annan function
+    settingsWindow(divSettings, divCalc); // skickar med variabeln till en annan function
+    
 }
 
 
@@ -33,10 +34,13 @@ function calculatorWindow(divCalc, divSettings) {
 
     const numberInput1 = document.createElement('input');
     numberInput1.setAttribute('id', 'input1');
+    numberInput1.setAttribute('type', 'number');
+    numberInput1.autofocus = true;
     divCalc.appendChild(numberInput1);
 
     const numberInput2 = document.createElement('input');
     numberInput2.setAttribute('id', 'input2');
+    numberInput2.setAttribute('type', 'number');
     divCalc.appendChild(numberInput2);
 
 
@@ -85,12 +89,13 @@ function calculatorWindow(divCalc, divSettings) {
 
     hideShowBtn.onclick = () => divSettings.hidden = !divSettings.hidden;
     divCalc.appendChild(hideShowBtn);
-
+    
+    settingsWindow(calculatorResult) 
 }
 
 
 
-function settingsWindow(divSettings) {
+function settingsWindow(divSettings, divCalc, calculatorResult) {
 
     const colorSelect = document.createElement('select');
     colorSelect.setAttribute('id', 'colorSelect');
@@ -98,6 +103,12 @@ function settingsWindow(divSettings) {
     createOptionsColor('Grey', colorSelect );
     createOptionsColor('Blue', colorSelect );
     createOptionsColor('Yellow', colorSelect );
+
+    colorSelect.onchange = (event) => { 
+
+        divCalc.className = event.target.value;
+
+    };
 
     divSettings.appendChild(colorSelect);
     
@@ -109,9 +120,13 @@ function settingsWindow(divSettings) {
     createOptionsFont('20px', fontSizeSelect );
     createOptionsFont('30px', fontSizeSelect );
 
+    fontSizeSelect.onchange = (event) => {
+
+        calculatorResult.className = event.target.value;
+    };
+
     divSettings.appendChild(fontSizeSelect);
 
-    // kanske clickable dropdown eller hover dropdown
 
 }
 
