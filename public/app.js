@@ -24,12 +24,12 @@ function build() {
 
 
     settingsWindow(divSettings); // skickar med variabeln till en annan function
-    calculatorWindow(divCalc); // skickar med variabeln till en annan function
+    calculatorWindow(divCalc, divSettings); // skickar med variabeln till en annan function
 
 }
 
 
-function calculatorWindow(divCalc) {
+function calculatorWindow(divCalc, divSettings) {
 
     const numberInput1 = document.createElement('input');
     numberInput1.setAttribute('id', 'input1');
@@ -74,7 +74,17 @@ function calculatorWindow(divCalc) {
     buttonClear.setAttribute('id', 'btnClear');
     divCalc.appendChild(buttonClear);
 
+
+
     // nollsätta txaResult
+
+
+    const hideShowBtn = document.createElement('button');
+    hideShowBtn.onclick = () => {divSettings.hidden = true}; 
+    hideShowBtn.innerText = 'Hide/Show';
+
+    hideShowBtn.onclick = () => divSettings.hidden = !divSettings.hidden;
+    divCalc.appendChild(hideShowBtn);
 
 }
 
@@ -82,11 +92,42 @@ function calculatorWindow(divCalc) {
 
 function settingsWindow(divSettings) {
 
-    const colorOption = document.createElement('Option');
-    colorOption.setAttribute('id', 'btnColorOption');
-    colorOption.innerText = 'Grey';
-    divSettings.appendChild(colorOption);
+    const colorSelect = document.createElement('select');
+    colorSelect.setAttribute('id', 'colorSelect');
+
+    createOptionsColor('Grey', colorSelect );
+    createOptionsColor('Blue', colorSelect );
+    createOptionsColor('Yellow', colorSelect );
+
+    divSettings.appendChild(colorSelect);
+    
+
+    const fontSizeSelect = document.createElement('select');
+    fontSizeSelect.setAttribute('id', 'fontSizeSelect');
+
+    createOptionsFont('12px', fontSizeSelect );
+    createOptionsFont('20px', fontSizeSelect );
+    createOptionsFont('30px', fontSizeSelect );
+
+    divSettings.appendChild(fontSizeSelect);
 
     // kanske clickable dropdown eller hover dropdown
+
+}
+
+function createOptionsFont(fontSize, target) {
+
+    const fontOption = document.createElement('option');
+    fontOption.setAttribute('value', fontSize);
+    fontOption.innerText = fontSize;
+    target.appendChild(fontOption);
+}   
+
+function createOptionsColor(colorName, target) {
+    
+    const colorOption = document.createElement('option');
+    colorOption.setAttribute('value', colorName);
+    colorOption.innerText = colorName;
+    target.appendChild(colorOption);
 
 }
